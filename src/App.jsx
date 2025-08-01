@@ -6,9 +6,12 @@ import BlogSection from "./BlogSection";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Header from "./Header";
 import Modal from "./Modal";
+import usePodcast from "./usePodcast";
+import PodcastSection from "./PodcastSection";
 
 function App() {
-  const [form, setform] = useState(false)
+  const [form, setform] = useState(false);
+
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
@@ -19,10 +22,10 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <>
-     {form && <Modal setForm={setform} form={form} />}
+        {form && <Modal setForm={setform} form={form} />}
         <Header setForm={setform} />
         <div className="blogListContainer">
-          <BlogSection />
+          <PodcastSection />
         </div>
       </>
     </QueryClientProvider>

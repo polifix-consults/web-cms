@@ -1,14 +1,14 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { AddArticle } from "./services/fetchArticle";
+import { AddPodcast } from "./services/fetchArticle";
 
-export default function useAddArticle() {
+export default function useAddPodcast() {
   const queryClient = useQueryClient();
 
   const { mutate, isSuccess, isLoading, error } = useMutation({
     mutationKey: ["addArticles"],
-    mutationFn: (art) => AddArticle(art),
+    mutationFn: (art) => AddPodcast(art),
     onSuccess: () => {
-      queryClient.invalidateQueries(["Articles"]); // Refreshes the "Articles" query after adding
+      queryClient.invalidateQueries(["podcast"]); // Refreshes the "podcast" query after adding
     },
   });
 

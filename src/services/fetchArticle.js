@@ -18,7 +18,7 @@ export async function addSubscriber(inserted) {
 }
 
 export async function Delete(id) {
-  const { error } = await supabase.from("Article").delete().eq("id", id);
+  const { error } = await supabase.from("podcast").delete().eq("id", id);
   if (error) throw new error();
   return { error };
 }
@@ -29,6 +29,22 @@ export async function AddArticle(newArticle) {
     .insert([newArticle])
     .select();
 
-    if (error) throw new error();
-    return { data };
+  if (error) throw new error();
+  return { data };
+}
+export async function AddPodcast(newPodcast) {
+  const { data, error } = await supabase
+    .from("podcast")
+    .insert([newPodcast])
+    .select();
+
+  if (error) throw new error();
+  return { data };
+}
+
+export async function fetchPodcast() {
+  let { data, error } = await supabase.from("podcast").select("*");
+
+  if (error) throw new error();
+  return { data };
 }

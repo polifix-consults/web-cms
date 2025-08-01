@@ -16,7 +16,12 @@ export default function Modal({ setForm, form }) {
 
   function onSubmit(data) {
     console.log(data);
-    mutate(data);
+    const datamod = {
+      ...data,
+      thumbnail: `https://img.youtube.com/vi/${data.thumbnail}/maxresdefault.jpg`,
+    };
+    console.log(datamod);
+    mutate(datamod);
     reset();
     if (isSuccess) setForm(false);
   }
@@ -31,62 +36,40 @@ export default function Modal({ setForm, form }) {
       <div className={styles.modalbox}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.modalHeader}>
-            <h1 className={styles.h2Modal}>Add a new article</h1>
+            <h1 className={styles.h2Modal}>Add a new podcast</h1>
             <button onClick={onClose} type="button" className={styles.cancel}>
               <HiXMark />
             </button>
           </div>
           <div className={styles.modalInput}>
-            <label htmlFor="Article Title">
-              Article Title
+            <label htmlFor="Video Title">
+              Video Title
               <input
-                {...register("article_title", { required: true })}
+                {...register("vidDescription", { required: true })}
                 className={styles.modalInputBox}
-                placeholder="article title"
+                placeholder="Podcast Title"
                 type="text"
-                id="fullName"
+                id="Vid"
               />
             </label>
-            <label htmlFor="article image">
-              Article Image
+            <label htmlFor="Podcast Thumbnail">
+              Podcast Thumbnail Image
               <input
-                {...register("article_img", { required: true })}
+                {...register("thumbnail", { required: true })}
                 className={styles.modalInputBox}
-                placeholder="article image"
+                placeholder="thumbnail image ID"
                 type="text"
-                id="artImg"
+                id="thumbnailimg"
               />
             </label>
             <label htmlFor="article youtube link">
-              Article Youtube Link
+              Podcast Youtube Link
               <input
-                {...register("article_yt_link", { required: true })}
+                {...register("youTubeLink", { required: true })}
                 className={styles.modalInputBox}
                 placeholder="Youtube Link"
                 type="text"
                 id="ytLink"
-              />
-            </label>
-
-            <label htmlFor="slug">
-              Slug
-              <div>
-                <input
-                  className={styles.modalInputBox}
-                  placeholder="does-the-government-really-care"
-                  type="text"
-                  id="slug"
-                  {...register("slug", { required: true })}
-                />
-              </div>
-            </label>
-            <label htmlFor="article_body">
-              Article Body
-              <textarea
-                className={styles.modalInputBox}
-                placeholder="Article Body"
-                id="description"
-                {...register("article_body", { required: true })}
               />
             </label>
           </div>

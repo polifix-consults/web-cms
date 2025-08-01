@@ -11,7 +11,7 @@ export default function Header({ setForm }) {
           className="btn-head"
           onClick={() => setForm((prev) => !prev, console.log("working"))}
         >
-          Add Blog
+          Add Podcast
         </button>
       </nav>
     </header>
