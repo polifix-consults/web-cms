@@ -43,7 +43,7 @@ export default function Modal({ setForm, form }) {
           </div>
           <div className={styles.modalInput}>
             <label htmlFor="Video Title">
-              Video Title
+              Podcast Title
               <input
                 {...register("vidDescription", { required: true })}
                 className={styles.modalInputBox}
